@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.flexitopic">
+<head>
+    <metal:javascript_head fill-slot="javascript_head_slot">
+      <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+    </metal:javascript_head>
+</head>
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main"
+                        tal:define="kssClassesView context/@@kss_field_decorator_view;
+                            getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                            templateId template/getId">
+            <div tal:replace="structure provider:plone.abovecontenttitle" />
+            <h1 class="documentFirstHeading" tal:content="context/Title">
+                Title
+            </h1>
+
+            <div tal:replace="structure provider:plone.belowcontenttitle" />
+            <dl class="enableFormTabbing" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+                <dt id="fieldsetlegend-flexi-map">Map</dt>
+                <dd id="fieldset-flexi-map">
+                    <div id="flexitopicmap" style="height:450px; width: 900px">
+
+<!-- Collective.geo map -->
+
+        <metal:use use-macro="context/@@collectivegeo-macros/map-widget"  />
+        <script type="text/javascript"
+                src="++resource++geo.kml.javascripts/kml_openlayers.js"></script>
+
+<!-- /Collective.geo map -->
+                    </div>
+
+                </dd>
+
+
+                <dt id="fieldsetlegend-about-projects">About</dt>
+                <dd id="fieldset-about-projects">
+                  <div class="documentDescription"
+                    tal:content="here/Description">
+                  </div>
+                </dd>
+                <tal:subtopics condition="here/hasSubtopics|nothing"
+                       define="topics view/get_subtopics">
+                  <tal:loop tal:repeat="topic topics">
+                    <dt tal:content="topic/title" tal:attributes="id string:fieldsetlegend-${topic/id}"> Subtopic title</dt>
+                    <dd tal:attributes="id string:fieldset-${topic/id}">
+                       <div tal:content="topic/description"> Description </div>
+                       <span tal:replace="structure python:view.render_table(topic)"></span>
+                       <div tal:content="structure topic/text"> Body Text </div>
+                    </dd>
+                  </tal:loop>
+                </tal:subtopics>
+            </dl>
+
+            <form id="flexitopicsearchform" name="search" method="get" class="enableAutoFocus" action="@@flexitopic_view">
+              <fieldset>
+                <legend>Search</legend>
+                <tal:loop tal:repeat="criterion view/get_criteria">
+                    <div class="field even"
+                        tal:define="oddrow repeat/criterion/odd;"
+                        tal:attributes="class python:oddrow and 'field even' or 'field odd'">
+                        <label i18n:translate="" tal:content="criterion/label"
+                            tal:attributes="for criterion/field">Field name</label>
+                        <div class="formHelp" i18n:translate="" tal:content="criterion/description">
+                        help description
+                        </div>
+                        <div  tal:replace="structure criterion/input" />
+                    </div>
+
+
+
+                </tal:loop>
+                <div class="formControls even">
+                    <input type="submit" value="Search" name="submit"
+                        class="searchButton"
+                        i18n:attributes="value label_search;"/>
+                </div>
+              </fieldset>
+            </form>
+            <div tal:content="structure here/getText">
+            Body Text
+            </div>
+            <div tal:define="search_results view/search_results" tal:condition="search_results">
+                <span tal:replace="structure python:view.render_table(search_results)"></span>
+            </div>
+        <script tal:content="structure view/get_js" />
+        </tal:main-macro>
+    </div>
+</body>
+</html>

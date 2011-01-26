@@ -1,0 +1,5 @@
+<layers>
+ <layer
+    name="collective.geo.flexitopic"
+    interface="collective.geo.flexitopic.interfaces.IGeoFlexiTopicLayer" />
+</layers>

@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.geo.flexitopic">
+
+  <browser:page
+      for="Products.ATContentTypes.interfaces.topic.IATTopic"
+      name="flexitopic_map_view"
+      class=".flexitopicview.FlexiTopicMapView"
+      template="flexitopicview.pt"
+      allowed_interface="collective.flexitopic.browser.flexitopicview.IFlexiTopicView"
+      permission="zope.Public"
+      />
+
+  <browser:menuItem
+      title="Flexi Topic Map View"
+      for="Products.ATContentTypes.interface.IATTopic"
+      menu="plone_displayviews"
+      action="flexitopic_map_view"
+      description="Set Flexitopic as default view."
+      />
+
+  <adapter
+      for="collective.flexitopic.browser.flexitopicview.IFlexiTopicView
+           zope.interface.Interface
+           zope.interface.Interface
+           zope.interface.Interface"
+      factory=".maplayer.KMLMapLayers"
+      />
+
+  <browser:page
+      for="Products.ATContentTypes.interfaces.topic.IATTopic"
+      name="flexitopickml_view"
+      class=".kmlview.FlexiTopicKmlView"
+      allowed_interface=".kmlview.IFlexiTopicKmlView"
+      permission="zope.Public"
+      />
+
+</configure>
