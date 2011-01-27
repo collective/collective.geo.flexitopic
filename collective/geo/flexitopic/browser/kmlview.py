@@ -1,10 +1,10 @@
 from zope.interface import implements, Interface
-
-from Products.Five import BrowserView
+from plone.memoize import view
 from Products.CMFCore.utils import getToolByName
 
 from collective.geo.kml.browser.kmldocument import KMLBaseDocument, BrainPlacemark
 from collective.flexitopic.browser.utils import get_search_results
+
 
 class IFlexiTopicKmlView(Interface):
     """
@@ -25,6 +25,7 @@ class FlexiTopicKmlView(KMLBaseDocument):
 
 
     @property
+    @view.memoize
     def features(self):
         results = get_search_results(self)['results']
         for brain in results:
