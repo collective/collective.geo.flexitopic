@@ -25,6 +25,9 @@ setup(name='collective.geo.flexitopic',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'collective.geo.kml',
+          'collective.geo.mapwidget',
+          'collective.flexitopic',
       ],
       entry_points="""
       # -*- Entry points: -*-

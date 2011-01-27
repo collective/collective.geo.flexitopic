@@ -1,0 +1,7 @@
+<metadata>
+ <version>1</version>
+ <dependencies>
+  <dependency>profile-collective.geo.kml:default</dependency>
+  <dependency>profile-collective.flexitopic:default</dependency>
+ </dependencies>
+</metadata>
