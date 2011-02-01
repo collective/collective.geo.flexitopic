@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object>
+    <order manager="collective.flexitopic.top">
+        <viewlet name="collective.geo.flexitopic.map" />
+        <viewlet name="collective.flexitopic.about" />
+        <viewlet name="collective.flexitopic.subtopics" />
+    </order>
+    <!--order manager="collective.flexitopic.javascript">
+        <viewlet name="collective.flexitopic.defaultjs" />
+    </order-->
+</object>

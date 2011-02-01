@@ -7,9 +7,8 @@
       for="Products.ATContentTypes.interfaces.topic.IATTopic"
       name="flexitopic_map_view"
       class=".flexitopicview.FlexiTopicMapView"
-      template="flexitopicview.pt"
-      allowed_interface="collective.flexitopic.browser.flexitopicview.IFlexiTopicView"
-      permission="zope.Public"
+      allowed_interface=".flexitopicview.IFlexiTopicMapView"
+      permission="zope2.View"
       />
 
   <browser:menuItem
@@ -17,11 +16,33 @@
       for="Products.ATContentTypes.interface.IATTopic"
       menu="plone_displayviews"
       action="flexitopic_map_view"
-      description="Set Flexitopic as default view."
+      description="Set Flexitopic Map as default view."
       />
 
+  <!-- display mapwidget -->
+  <browser:viewlet
+        view=".flexitopicview.IFlexiTopicMapView"
+        name="collective.geo.flexitopic.map"
+        manager="collective.flexitopic.interfaces.IFlexiTopicTop"
+        layer="..interfaces.IGeoFlexiTopicLayer"
+        class=".flexitopicview.MapViewlet"
+        permission="zope2.View"
+        template="map_viewlet.pt"
+        />
+
+
+  <!-- override javascript for map view -->
+  <browser:viewlet
+        name="collective.flexitopic.defaultjs"
+        manager="collective.flexitopic.interfaces.IFlexiTopicJs"
+        view=".flexitopicview.IFlexiTopicMapView"
+        layer="..interfaces.IGeoFlexiTopicLayer"
+        class=".flexitopicview.JsMapViewlet"
+        permission="zope2.View"
+        />
+
   <adapter
-      for="collective.flexitopic.browser.flexitopicview.IFlexiTopicView
+      for=".flexitopicview.IFlexiTopicMapView
            zope.interface.Interface
            zope.interface.Interface
            zope.interface.Interface"
@@ -33,7 +54,7 @@
       name="flexitopickml_view"
       class=".kmlview.FlexiTopicKmlView"
       allowed_interface=".kmlview.IFlexiTopicKmlView"
-      permission="zope.Public"
+      permission="zope2.View"
       />
 
 </configure>

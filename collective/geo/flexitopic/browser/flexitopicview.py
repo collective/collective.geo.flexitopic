@@ -1,9 +1,18 @@
+from zope.interface import Interface, implements
 from collective.flexitopic.browser.flexitopicview import FlexiTopicView
+from collective.flexitopic.browser.viewlets import JsViewlet, BaseViewlet
+from collective.geo.kml.interfaces import IKMLOpenLayersViewlet
 
-
+class IFlexiTopicMapView(Interface):
+    ''' add a map to the flexitopc view'''
 
 class FlexiTopicMapView(FlexiTopicView):
     ''' add a map to the flexitopc view'''
+    implements(IFlexiTopicMapView)
+
+class JsMapViewlet(JsViewlet):
+    ''' overide the flexitopic js viewlet '''
+
     add_form_data_js = '''
        // refresh map
         var qs = '?';
@@ -21,4 +30,12 @@ class FlexiTopicMapView(FlexiTopicView):
         layer.refresh({ force: true, params: params });
         layer.setVisibility(true);
         '''
+    def get_js(self):
+
+        return super(JsMapViewlet, self).get_js()
+
+class MapViewlet(BaseViewlet):
+    '''' render the map based on the query
+    '''
+    implements(IKMLOpenLayersViewlet)
 

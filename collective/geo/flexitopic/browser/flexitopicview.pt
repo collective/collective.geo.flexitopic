@@ -20,20 +20,7 @@
 
             <div tal:replace="structure provider:plone.belowcontenttitle" />
             <dl class="enableFormTabbing" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
-                <dt id="fieldsetlegend-flexi-map">Map</dt>
-                <dd id="fieldset-flexi-map">
-                    <div id="flexitopicmap" style="height:450px; width: 900px">
 
-<!-- Collective.geo map -->
-
-        <metal:use use-macro="context/@@collectivegeo-macros/map-widget"  />
-        <script type="text/javascript"
-                src="++resource++geo.kml.javascripts/kml_openlayers.js"></script>
-
-<!-- /Collective.geo map -->
-                    </div>
-
-                </dd>
 
 
                 <dt id="fieldsetlegend-about-projects">About</dt>
