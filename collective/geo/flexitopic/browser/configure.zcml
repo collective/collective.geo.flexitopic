@@ -3,6 +3,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.geo.flexitopic">
 
+
   <browser:page
       for="Products.ATContentTypes.interfaces.topic.IATTopic"
       name="flexitopic_map_view"
@@ -31,14 +32,18 @@
         />
 
 
-  <!-- override javascript for map view -->
+  <!-- override javascript for map view
+    note that it is registerd for the layer
+    collective.flexitopic.interfaces.IFlexiTopicLayer
+    but a different view!
+  -->
   <browser:viewlet
         name="collective.flexitopic.defaultjs"
         manager="collective.flexitopic.interfaces.IFlexiTopicJs"
-        view=".flexitopicview.IFlexiTopicMapView"
-        layer="..interfaces.IGeoFlexiTopicLayer"
         class=".flexitopicview.JsMapViewlet"
         permission="zope2.View"
+        view=".flexitopicview.IFlexiTopicMapView"
+        layer="collective.flexitopic.interfaces.IFlexiTopicLayer"
         />
 
   <adapter

@@ -30,9 +30,6 @@ class JsMapViewlet(JsViewlet):
         layer.refresh({ force: true, params: params });
         layer.setVisibility(true);
         '''
-    def get_js(self):
-
-        return super(JsMapViewlet, self).get_js()
 
 class MapViewlet(BaseViewlet):
     '''' render the map based on the query

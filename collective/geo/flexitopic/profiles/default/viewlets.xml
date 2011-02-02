@@ -5,7 +5,4 @@
         <viewlet name="collective.flexitopic.about" />
         <viewlet name="collective.flexitopic.subtopics" />
     </order>
-    <!--order manager="collective.flexitopic.javascript">
-        <viewlet name="collective.flexitopic.defaultjs" />
-    </order-->
 </object>
