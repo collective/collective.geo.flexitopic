@@ -22,6 +22,17 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+ <!-- Register the upgrade step -->
+  <genericsetup:upgradeStep
+      title="Empty ugrade step"
+      description=""
+      source="*"
+      destination="1002"
+      handler="collective.geo.flexitopic.setuphandlers.do_nothing"
+      profile="collective.geo.flexitopic:default" />
+
+
+
   <!-- -*- extra stuff goes here -*- -->
 
 
