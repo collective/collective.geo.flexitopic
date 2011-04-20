@@ -20,4 +20,4 @@ def import_various(context):
         return
     logger = context.getLogger('collective.geo.flexitopic')
     site = context.getSite()
-    add_catalog_indexes(site, logger)
+    pass
