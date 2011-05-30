@@ -10,6 +10,7 @@ class FlexiTopicMapView(FlexiTopicView):
     ''' add a map to the flexitopc view'''
     implements(IFlexiTopicMapView)
 
+
 class JsMapViewlet(JsViewlet):
     ''' overide the flexitopic js viewlet '''
 
