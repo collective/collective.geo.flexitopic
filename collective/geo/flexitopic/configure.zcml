@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
@@ -11,7 +12,7 @@
 
   <include package=".browser" />
 
-  <i18n:registerTranslations directory="locales" />
+  <!--i18n:registerTranslations directory="locales" /-->
 
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
