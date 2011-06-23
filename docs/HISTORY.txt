@@ -4,6 +4,8 @@ Changelog
 0.2 (2011/06/17)
 ----------------
 
+ - Added support for Spanish localization [macagua]
+ - Added improvements about the Internationalization [macagua]
  - plone 4.1 compatible
 
 0.1 (2011/03/30)
