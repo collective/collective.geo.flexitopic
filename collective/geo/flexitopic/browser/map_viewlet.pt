@@ -1,4 +1,4 @@
-<dt id="fieldsetlegend-flexi-map" i18n:domain="collective.flexitopic" >Map</dt>
+<dt id="fieldsetlegend-flexi-map" i18n:domain="collective.geo.flexitopic" i18n:translate="">Map</dt>
 <dd id="fieldset-flexi-map">
     <div id="flexitopicmap" style="height:450px; width: 900px">
         <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
@@ -6,5 +6,5 @@
         <script type="text/javascript"
         src="++resource++geo.kml.javascripts/kml_openlayers.js"></script>
     </div>
-    <a href="@@flexitopickml_view" id="flexitopickmlurl"> Download KML </a>
+    <a href="@@flexitopickml_view" id="flexitopickmlurl" i18n:translate=""> Download KML </a>
 </dd>
