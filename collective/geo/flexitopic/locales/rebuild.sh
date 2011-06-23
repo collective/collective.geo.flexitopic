@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#cd "`dirname $0`/.."
-
 PRODUCT=collective.geo.flexitopic
 
 i18ndude rebuild-pot --pot ../locales/${PRODUCT}.pot --create $PRODUCT  ../browser
