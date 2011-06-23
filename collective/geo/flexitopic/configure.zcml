@@ -12,7 +12,7 @@
 
   <include package=".browser" />
 
-  <!--i18n:registerTranslations directory="locales" /-->
+  <i18n:registerTranslations directory="locales" />
 
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
@@ -20,8 +20,7 @@
       title="Collective Geo Flexitopic"
       directory="profiles/default"
       description="Build flexible searchable maps with topics (collections)"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+      provides="Products.GenericSetup.interfaces.EXTENSION" />
 
  <!-- Register the upgrade step -->
   <genericsetup:upgradeStep
