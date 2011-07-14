@@ -23,7 +23,7 @@ class KMLMapLayer(MapLayer):
               formatOptions: {
                   extractStyles: true,
                   extractAttributes: true }
-            });}""" % (self.context.Title().replace("'", "\'"), context_url)
+            });}""" % (self.context.Title().replace("'", "&apos;"), context_url)
 
 
 class KMLMapLayers(MapLayers):
