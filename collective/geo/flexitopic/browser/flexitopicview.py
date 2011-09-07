@@ -23,15 +23,17 @@ class JsMapViewlet(JsViewlet):
             params[field.name] = field.value;
         });
         var map = cgmap.config['default-cgmap'].map;
-        var kmls = map.getLayersByClass('OpenLayers.Layer.GML');
-        var kmlUrl = '%s/@@flexitopickml_view' + qs;
-        jQuery("a#flexitopickmlurl").attr('href', kmlUrl);
-        layer = kmls[0];
-        layer.setVisibility(false);
-        layer.loaded = false;
-        layer.setUrl(kmlUrl);
-        layer.refresh({ force: true, params: params });
-        layer.setVisibility(true);
+        if ( map != null){
+            var kmls = map.getLayersByClass('OpenLayers.Layer.GML');
+            var kmlUrl = '%s/@@flexitopickml_view' + qs;
+            jQuery("a#flexitopickmlurl").attr('href', kmlUrl);
+            layer = kmls[0];
+            layer.setVisibility(false);
+            layer.loaded = false;
+            layer.setUrl(kmlUrl);
+            layer.refresh({ force: true, params: params });
+            layer.setVisibility(true);
+        };
         '''
 
 class MapViewlet(BaseViewlet):
