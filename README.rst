@@ -80,9 +80,9 @@ buildout, by having a buildout configuration such as: ::
 
 
 
-- Code repository: http://svn.plone.org/svn/collective/collective.geo.flexitopic/
+- Code repository: https://github.com/collective/collective.geo.flexitopic/
 - Questions and comments to product-developers@lists.plone.org
-- Report bugs at http://plone.org/products/collective.geo.flexitopic/issues
+- Report bugs at https://github.com/collective/collective.geo.flexitopic/issues
 
 
 
