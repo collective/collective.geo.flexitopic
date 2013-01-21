@@ -45,12 +45,12 @@ Flexicollection so beware.
 * Keyword Indices (like tags): a drop down list will be generated to
   narrow the search down
       * if the criterion operator is AND the list will contain all
-      unique values of the index minus the ones you selected,
-      the query will search for all terms that match your criteria
-      plus the user input
+         unique values of the index minus the ones you selected,
+         the query will search for all terms that match your criteria
+         plus the user input
       * if the criterion is OR the terms you selected will be display
-      in the selection list. the search will be for the user supplied
-      input only
+        in the selection list. the search will be for the user supplied
+        input only
 
 The output is always a table with the fields you supplied in the
 'Table Columns' of the collection, no matter if 'Display as Table'
