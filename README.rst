@@ -47,10 +47,11 @@ Flexicollection so beware.
   and always be applied to the query
 * Keyword Indices (like tags): a drop down list will be generated to
   narrow the search down
+
       * if the criterion operator is AND the list will contain all
-         unique values of the index minus the ones you selected,
-         the query will search for all terms that match your criteria
-         plus the user input (this only applies to old style collections)
+        unique values of the index minus the ones you selected,
+        the query will search for all terms that match your criteria
+        plus the user input (this only applies to old style collections)
       * if the criterion is OR the terms you selected will be display
         in the selection list. The search will be for the user supplied
         input only. This is the only available behaviour for new style
@@ -83,7 +84,7 @@ buildout, by having a buildout configuration such as: ::
 
 
 - Code repository: https://github.com/collective/collective.geo.flexitopic/
-- Questions and comments to product-developers@lists.plone.org
+- Questions and comments to http://www.coactivate.org/projects/collectivegeo/lists/collectivegeo-discussion/
 - Report bugs at https://github.com/collective/collective.geo.flexitopic/issues
 
 

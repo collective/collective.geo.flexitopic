@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.4 (unreleased)
+----------------
+
+- support for plone.app.collection
+- use Vectorlayer instead of GMLLayer
+
+
 0.2 (2011/06/17)
 ----------------
 
