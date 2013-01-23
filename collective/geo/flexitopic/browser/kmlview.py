@@ -3,7 +3,7 @@ from plone.memoize import view
 from Products.CMFCore.utils import getToolByName
 
 from collective.geo.kml.browser.kmldocument import KMLBaseDocument, BrainPlacemark
-from collective.flexitopic.browser.utils import get_search_results
+from collective.flexitopic.browser.utils import get_search_results, get_search_results_ng
 
 
 class IFlexiTopicKmlView(Interface):
@@ -25,8 +25,24 @@ class FlexiTopicKmlView(KMLBaseDocument):
 
 
     @property
-    @view.memoize
     def features(self):
         results = get_search_results(self)['results']
         for brain in results:
-            yield BrainPlacemark(brain, self.request, self)
+            try:
+                if brain.zgeo_geometry['coordinates']:
+                    yield BrainPlacemark(brain, self.request, self)
+            except:
+                continue
+
+class FlexiCollectionKmlView(FlexiTopicKmlView):
+
+    @property
+    def features(self):
+        results = get_search_results_ng(self)['results']
+        for brain in results:
+            try:
+                if brain.zgeo_geometry['coordinates']:
+                    yield BrainPlacemark(brain, self.request, self)
+            except:
+                continue
+

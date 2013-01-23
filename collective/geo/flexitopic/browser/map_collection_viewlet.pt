@@ -1,0 +1,9 @@
+
+<div id="flexitopicmap" style="height:450px; width: 900px">
+    <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+    <metal:use use-macro="context/@@collectivegeo-macros/map-widget"  />
+    <script type="text/javascript"
+    src="++resource++geo.kml.javascripts/kml_openlayers.js"></script>
+</div>
+<a href="@@flexitopickml_view" id="flexitopickmlurl" i18n:translate=""> Download KML </a>
+

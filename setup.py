@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2'
+version = '0.3'
 
 setup(name='collective.geo.flexitopic',
       version=version,
@@ -16,6 +16,8 @@ setup(name='collective.geo.flexitopic',
         "Framework :: Plone",
         "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
+        #"Framework :: Plone :: 4.3",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Topic :: Scientific/Engineering :: GIS",

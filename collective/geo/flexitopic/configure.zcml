@@ -31,9 +31,20 @@
       handler="collective.geo.flexitopic.setuphandlers.do_nothing"
       profile="collective.geo.flexitopic:default" />
 
+  <genericsetup:upgradeStep
+      title="Register for plone.app.collection"
+      description=""
+      source="1002"
+      destination="1003"
+      handler="collective.geo.flexitopic.setuphandlers.add_ng_collection"
+      profile="collective.geo.flexitopic:default" />
 
 
-  <!-- -*- extra stuff goes here -*- -->
+   <utility factory="collective.geo.flexitopic.profile.HiddenProfiles"
+           name="collective.geo.hiddenprofiles" />
+
+   <utility factory="collective.geo.flexitopic.profile.HiddenProducts"
+           name="collective.geo.hiddenproducts" />
 
 
 </configure>

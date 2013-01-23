@@ -8,10 +8,10 @@ collections. It combines plone maps (collective.geo) with collective.flexitopic.
 collective.flexitopic
 =====================
 
-Flexitopic integrates the easy use of plone collections with a Flexigrid
+Flexitopic integrates the easy use of plone collections with a Flexigrid_
 AJAX view. The criteria from the topic are taken to construct a simple
-query form to narrow down a search inside a collection. Subtopics are
-displayed inside tabs of the collection.
+query form to narrow down a search inside a collection.
+For old style colletions subtopics are displayed inside tabs of the collection.
 
 * Flexitopic does not install a new content type but just adds an
   additional view to the collection type.
@@ -19,8 +19,11 @@ displayed inside tabs of the collection.
   same usability, no information loss.
 * it requires JQuery only (built into plone 4) no JQuery UI
 * lightweight JS
-      * Flexigrid: 24 KB packed
-      * Slider 15 KB packed
+      * Flexigrid_: 24 KB packed
+      * JSlider_: 15 KB packed
+
+.. _Flexigrid: http://flexigrid.info/
+.. _JSlider: http://egorkhmelev.github.com/jslider/
 
 
 Usage
@@ -39,7 +42,7 @@ Flexicollection so beware.
 * Title: search or sort by title (see above)
 * Description: search description only (search see above, no sorting here!)
 * Dates (effective, created, ...):  will be converted to  date ranges
-  and can be selected with the JQuery Slider Plugin)
+  and can be selected with the JQuery JSlider_ Plugin)
 * Location (path index): will not be displayed in the search form
   and always be applied to the query
 * Keyword Indices (like tags): a drop down list will be generated to
@@ -47,17 +50,18 @@ Flexicollection so beware.
       * if the criterion operator is AND the list will contain all
          unique values of the index minus the ones you selected,
          the query will search for all terms that match your criteria
-         plus the user input
+         plus the user input (this only applies to old style collections)
       * if the criterion is OR the terms you selected will be display
-        in the selection list. the search will be for the user supplied
-        input only
+        in the selection list. The search will be for the user supplied
+        input only. This is the only available behaviour for new style
+        collections
 
 The output is always a table with the fields you supplied in the
 'Table Columns' of the collection, no matter if 'Display as Table'
 is checked or not.
 
-Subtopics:
-----------
+Subtopics (old style Collections only):
+---------------------------------------
 
 Flexitopic will display subtopics as tabs on top of the page. The first
 tab is the description of the topic, subtopics will occupy the following

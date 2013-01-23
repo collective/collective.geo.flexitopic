@@ -1,5 +1,6 @@
 from zope.interface import Interface, implements
 from collective.flexitopic.browser.flexitopicview import FlexiTopicView
+from collective.flexitopic.browser.flexitopicview import FlexiCollectionView
 from collective.flexitopic.browser.viewlets import JsViewlet, BaseViewlet
 from collective.geo.kml.interfaces import IKMLOpenLayersViewlet
 
@@ -7,6 +8,11 @@ class IFlexiTopicMapView(Interface):
     ''' add a map to the flexitopc view'''
 
 class FlexiTopicMapView(FlexiTopicView):
+    ''' add a map to the flexitopc view'''
+    implements(IFlexiTopicMapView)
+
+
+class FlexiCollectionMapView(FlexiCollectionView):
     ''' add a map to the flexitopc view'''
     implements(IFlexiTopicMapView)
 
@@ -24,15 +30,11 @@ class JsMapViewlet(JsViewlet):
         });
         var map = cgmap.config['default-cgmap'].map;
         if ( map != null){
-            var kmls = map.getLayersByClass('OpenLayers.Layer.GML');
+            var kmls = map.getLayersByClass('OpenLayers.Layer.Vector');
             var kmlUrl = '%s/@@flexitopickml_view' + qs;
             jQuery("a#flexitopickmlurl").attr('href', kmlUrl);
             layer = kmls[0];
-            layer.setVisibility(false);
-            layer.loaded = false;
-            layer.setUrl(kmlUrl);
-            layer.refresh({ force: true, params: params });
-            layer.setVisibility(true);
+            layer.refresh({url: kmlUrl});
         };
         '''
 

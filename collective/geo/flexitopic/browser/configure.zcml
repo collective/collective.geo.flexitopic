@@ -2,9 +2,11 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.geo.flexitopic">
 
   <include package="plone.app.contentmenu" />
+
 
   <browser:page
       for="Products.ATContentTypes.interfaces.topic.IATTopic"
@@ -14,6 +16,16 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      zcml:condition="installed plone.app.collection"
+      for="plone.app.collection.interfaces.ICollection"
+      name="flexitopic_map_view"
+      class=".flexitopicview.FlexiCollectionMapView"
+      allowed_interface=".flexitopicview.IFlexiTopicMapView"
+      permission="zope2.View"
+      />
+
+
   <browser:menuItem
       title="Flexi Topic Map View"
       for="Products.ATContentTypes.interface.IATTopic"
@@ -22,8 +34,19 @@
       description="Set Flexitopic Map as default view."
       />
 
+  <browser:menuItem
+      title="Flexi Topic Map View"
+      zcml:condition="installed plone.app.collection"
+      for="plone.app.collection.interfaces.ICollection"
+      menu="plone_displayviews"
+      action="flexitopic_map_view"
+      description="Set Flexitopic Map as default view."
+      />
+
+
   <!-- display mapwidget -->
   <browser:viewlet
+        for="Products.ATContentTypes.interfaces.topic.IATTopic"
         view=".flexitopicview.IFlexiTopicMapView"
         name="collective.geo.flexitopic.map"
         manager="collective.flexitopic.interfaces.IFlexiTopicTop"
@@ -33,6 +56,18 @@
         template="map_viewlet.pt"
         />
 
+
+  <browser:viewlet
+        zcml:condition="installed plone.app.collection"
+        for="plone.app.collection.interfaces.ICollection"
+        view=".flexitopicview.IFlexiTopicMapView"
+        name="collective.geo.flexitopic.map"
+        manager="collective.flexitopic.interfaces.IFlexiTopicTop"
+        layer="..interfaces.IGeoFlexiTopicLayer"
+        class=".flexitopicview.MapViewlet"
+        permission="zope2.View"
+        template="map_collection_viewlet.pt"
+        />
 
   <!-- override javascript for map view
     note that it is registerd for the layer
@@ -63,5 +98,15 @@
       allowed_interface=".kmlview.IFlexiTopicKmlView"
       permission="zope2.View"
       />
+
+  <browser:page
+      zcml:condition="installed plone.app.collection"
+      for="plone.app.collection.interfaces.ICollection"
+      name="flexitopickml_view"
+      class=".kmlview.FlexiCollectionKmlView"
+      allowed_interface=".kmlview.IFlexiTopicKmlView"
+      permission="zope2.View"
+      />
+
 
 </configure>

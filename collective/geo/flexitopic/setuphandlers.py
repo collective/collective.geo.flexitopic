@@ -9,7 +9,13 @@ def do_nothing(context, logger=None):
         logger = logging.getLogger('collective.geo.flexitopic')
         logger.info("Empty upgrade step")
 
-
+def add_ng_collection(context, logger=None):
+    if logger is None:
+        # Called as upgrade step: define our own logger.
+        logger = logging.getLogger('collective.geo.flexitopic')
+    logger.info("Add typeinfo for new style collections")
+    setup = getToolByName(context, 'portal_setup')
+    setup.runImportStepFromProfile(PROFILE_ID, 'typeinfo')
 
 
 def import_various(context):
