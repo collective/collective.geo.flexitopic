@@ -83,13 +83,13 @@
         layer="collective.flexitopic.interfaces.IFlexiTopicLayer"
         />
 
-  <adapter
+  <!--adapter
       for=".flexitopicview.IFlexiTopicMapView
            zope.interface.Interface
            zope.interface.Interface
            zope.interface.Interface"
       factory=".maplayer.KMLMapLayers"
-      />
+      /-->
 
   <browser:page
       for="Products.ATContentTypes.interfaces.topic.IATTopic"
@@ -107,6 +107,16 @@
       allowed_interface=".kmlview.IFlexiTopicKmlView"
       permission="zope2.View"
       />
+
+  <browser:viewlet
+    zcml:condition="installed collective.geo.index"
+    name="collective.geo.flexitopic.geosearch"
+    manager="collective.flexitopic.interfaces.IFlexiTopicFormExt"
+    template="formviewlet.pt"
+    permission="zope2.View"
+    layer="collective.flexitopic.interfaces.IFlexiTopicLayer"
+    />
+
 
 
 </configure>
