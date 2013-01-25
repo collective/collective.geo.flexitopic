@@ -83,13 +83,13 @@
         layer="collective.flexitopic.interfaces.IFlexiTopicLayer"
         />
 
-  <!--adapter
-      for=".flexitopicview.IFlexiTopicMapView
+  <adapter
+      for="..interfaces.IGeoFlexiTopicViewlet
            zope.interface.Interface
            zope.interface.Interface
            zope.interface.Interface"
       factory=".maplayer.KMLMapLayers"
-      /-->
+      />
 
   <browser:page
       for="Products.ATContentTypes.interfaces.topic.IATTopic"

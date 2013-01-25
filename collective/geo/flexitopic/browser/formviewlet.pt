@@ -6,12 +6,12 @@
 <input
     name="zgeo_geometry"
     id="zgeogeometryinput"
-    type="text"
+    type="hidden"
     size="25"
-    tal:define="searchgeometry request/zgeo_geometry|string:-180,-90,180,90;"
+    tal:define="searchgeometry request/zgeo_geometry|string:-179.9999,-89.9999,179.9999,89.9999;"
     tal:attributes="value searchgeometry;"
 />
-<input id="geom_equals" type="radio" name="zgeo_geometry_usage" value="geometry_operator:equals" />
+<!--input id="geom_equals" type="radio" name="zgeo_geometry_usage" value="geometry_operator:equals" />
 <label for="geom_equals" i18n:domain="collective.geo.flexitopic" i18n:translate="">equals</label>
 <input id="geom_disjoint" type="radio" name="zgeo_geometry_usage" value="geometry_operator:disjoint" />
 <label for="geom_disjoint" i18n:domain="collective.geo.flexitopic" i18n:translate="">disjoint</label>
@@ -20,11 +20,11 @@
 <input id="geom_touches" type="radio" name="zgeo_geometry_usage" value="geometry_operator:touches" />
 <label for="geom_touches" i18n:domain="collective.geo.flexitopic" i18n:translate="">touches</label>
 <input id="geom_crosses" type="radio" name="zgeo_geometry_usage" value="geometry_operator:crosses" />
-<label for="geom_crosses" i18n:domain="collective.geo.flexitopic" i18n:translate="">crosses</label>
+<label for="geom_crosses" i18n:domain="collective.geo.flexitopic" i18n:translate="">crosses</label-->
 <input id="geom_within" type="radio" name="zgeo_geometry_usage" value="geometry_operator:within" checked="checked"/>
 <label for="geom_within"  i18n:domain="collective.geo.flexitopic" i18n:translate="">within</label>
-<input id="geom_contains" type="radio" name="zgeo_geometry_usage" value="geometry_operator:contains" />
-<label for="geom_contains" i18n:domain="collective.geo.flexitopic" i18n:translate="">contains</label>
+<!--input id="geom_contains" type="radio" name="zgeo_geometry_usage" value="geometry_operator:contains" />
+<label for="geom_contains" i18n:domain="collective.geo.flexitopic" i18n:translate="">contains</label-->
 <input id="geom_overlaps" type="radio" name="zgeo_geometry_usage" value="geometry_operator:overlaps" />
 <label for="geom_overlaps" i18n:domain="collective.geo.flexitopic" i18n:translate="">overlaps</label>
 <br/>
@@ -37,16 +37,16 @@
         /* The bounding box value is rendered out into the input element from
            the request */
         var bbox_value = jQuery("input#zgeogeometryinput").val();
+        var boxes = new OpenLayers.Layer.Boxes("Search in this bbox");
+        map.addLayer(boxes);
         if (bbox_value.length > 8){
             var bbox_values = bbox_value.split(',')
             var bounds = new OpenLayers.Bounds(bbox_values[0], bbox_values[1], bbox_values[2], bbox_values[3]);
-            var boxes = new OpenLayers.Layer.Boxes("Search in this bbox");
             var projection_object = map.getProjectionObject();
             var from = new OpenLayers.Projection("EPSG:4326");
             var projected_bounds = bounds.transform(from, projection_object);
             var box = new OpenLayers.Marker.Box(projected_bounds);
             boxes.addMarker(box);
-            map.addLayer(boxes);
             map.zoomToExtent(projected_bounds);
         };
         var control = new OpenLayers.Control();
@@ -64,11 +64,24 @@
             notice: function (bounds) {
                 var ll = map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.left, bounds.bottom)).transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
                 var ur = map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.right, bounds.top)).transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
-                var input_string = ll.lon.toFixed(1) + "," + ll.lat.toFixed(1) + "," + ur.lon.toFixed(1) + "," + ur.lat.toFixed(1);
-                var i = ll.lon.toFixed(1)
-                if ( !isNaN(i) ){
+                var minx = ll.lon.toFixed(5); var miny = ll.lat.toFixed(5);
+                var maxx = ur.lon.toFixed(5); var maxy = ur.lat.toFixed(5);
+                var input_string = minx + "," + miny +"," + maxx + "," + maxy;
+                if ( !isNaN(minx) ){
                     jQuery("input#zgeogeometryinput").val(input_string);
                     jQuery('#flexitopicresults').flexOptions({newp: 1}).flexReload();
+                    var bounds = new OpenLayers.Bounds(minx, miny, maxx, maxy);
+                    var projection_object = map.getProjectionObject();
+                    var from = new OpenLayers.Projection("EPSG:4326");
+                    var projected_bounds = bounds.transform(from, projection_object);
+                    if (boxes.markers.length > 0){
+                        var box = boxes.markers[0];
+                        box.bounds = projected_bounds;
+                    } else {
+                        var box = new OpenLayers.Marker.Box(projected_bounds);
+                        boxes.addMarker(box);
+                    };
+                    map.zoomToExtent(projected_bounds);
                 };
             }
         });

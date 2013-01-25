@@ -2,7 +2,8 @@ from zope.interface import Interface, implements
 from collective.flexitopic.browser.flexitopicview import FlexiTopicView
 from collective.flexitopic.browser.flexitopicview import FlexiCollectionView
 from collective.flexitopic.browser.viewlets import JsViewlet, BaseViewlet
-from collective.geo.kml.interfaces import IKMLOpenLayersViewlet
+from collective.geo.flexitopic.interfaces import IGeoFlexiTopicViewlet
+
 
 class IFlexiTopicMapView(Interface):
     ''' add a map to the flexitopc view'''
@@ -41,5 +42,5 @@ class JsMapViewlet(JsViewlet):
 class MapViewlet(BaseViewlet):
     '''' render the map based on the query
     '''
-    implements(IKMLOpenLayersViewlet)
+    implements(IGeoFlexiTopicViewlet)
 

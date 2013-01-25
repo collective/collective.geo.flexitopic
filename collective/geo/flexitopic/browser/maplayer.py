@@ -15,15 +15,23 @@ class KMLMapLayer(MapLayer):
         context_url = self.context.absolute_url()
         if not context_url.endswith('/'):
             context_url += '/'
+        query_string =''
+        return u"""
+        function() {
+                return new OpenLayers.Layer.Vector("%s", {
+                    protocol: new OpenLayers.Protocol.HTTP({
+                      url: "%s@@flexitopickml_view?%s",
+                      format: new OpenLayers.Format.KML({
+                        extractStyles: true,
+                        extractAttributes: true})
+                      }),
+                    strategies: [new OpenLayers.Strategy.Fixed()],
+                    visibility: true,
+                    projection: cgmap.createDefaultOptions().displayProjection
+                  });
+                } """ % (self.context.Title().replace("'", "&apos;"),
+                        context_url, query_string)
 
-        return"""
-        function() { return new OpenLayers.Layer.GML('%s', '%s' + '@@flexitopickml_view',
-            { format: OpenLayers.Format.KML,
-              projection: cgmap.createDefaultOptions().displayProjection,
-              formatOptions: {
-                  extractStyles: true,
-                  extractAttributes: true }
-            });}""" % (self.context.Title().replace("'", "&apos;"), context_url)
 
 
 class KMLMapLayers(MapLayers):
