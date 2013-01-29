@@ -41,10 +41,10 @@
 
 
    <utility factory="collective.geo.flexitopic.profile.HiddenProfiles"
-           name="collective.geo.hiddenprofiles" />
+           name="collective.geo.flexitopic.hiddenprofiles" />
 
    <utility factory="collective.geo.flexitopic.profile.HiddenProducts"
-           name="collective.geo.hiddenproducts" />
+           name="collective.geo.flexitopic.hiddenproducts" />
 
 
 </configure>
