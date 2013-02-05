@@ -1,4 +1,5 @@
 import logging
+from Products.CMFCore.utils import getToolByName
 # The profile id of your package:
 PROFILE_ID = 'profile-collective.geo.flexitopic:default'
 
