@@ -4,7 +4,7 @@ from zope.i18nmessageid import MessageFactory
 flexitopicMessageFactory = MessageFactory('collective.geo.flexitopic')
 
 DEPENDENCIES = [
-    u'collective.flexitopic',
+    #u'collective.flexitopic',
 ]
 
 def initialize(context):
