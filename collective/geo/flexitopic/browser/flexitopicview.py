@@ -29,7 +29,12 @@ class JsMapViewlet(JsViewlet):
             qs = qs + field.name + '=' + field.value + "&";
             params[field.name] = field.value;
         });
-        var map = cgmap.config['default-cgmap'].map;
+
+        try {
+            var map = $('#default-cgmap').data('collectivegeo').mapwidget.map;
+        } catch(e) {
+            var map = null;
+        };
         if ( map != null){
             var kmls = map.getLayersByClass('OpenLayers.Layer.Vector');
             var kmlUrl = '%s/@@flexitopickml_view' + qs;

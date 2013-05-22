@@ -27,7 +27,7 @@ class KMLMapLayer(MapLayer):
                       }),
                     strategies: [new OpenLayers.Strategy.Fixed()],
                     visibility: true,
-                    projection: cgmap.createDefaultOptions().displayProjection
+                    projection: widget.map.displayProjection
                   });
                 } """ % (self.context.Title().replace("'", "&apos;"),
                         context_url, query_string)

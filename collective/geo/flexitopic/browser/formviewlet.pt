@@ -31,9 +31,9 @@
  <script type="text/javascript">
 /*<![CDATA[*/
 (function($) {
-    $(window).bind("map-load", function() {
-        var map = cgmap.config['default-cgmap'].map;
-
+    "use strict";
+    $(window).bind('mapload', function (evt, widget) {
+        var map = widget.map;
         /* The bounding box value is rendered out into the input element from
            the request */
         var bbox_value = jQuery("input#zgeogeometryinput").val();
