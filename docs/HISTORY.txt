@@ -1,12 +1,13 @@
 Changelog
 =========
 
-0.4 (unreleased)
+0.3 (2013/08/30)
 ----------------
 
+- search inside a BBOX with collective.geo.index
 - support for plone.app.collection
 - use Vectorlayer instead of GMLLayer
-
+- add caching
 
 0.2 (2011/06/17)
 ----------------

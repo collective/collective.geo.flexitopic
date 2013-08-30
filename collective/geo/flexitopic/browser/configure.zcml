@@ -3,10 +3,11 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:cache="http://namespaces.zope.org/cache"
     i18n_domain="collective.geo.flexitopic">
 
   <include package="plone.app.contentmenu" />
-
+  <include package="z3c.caching" file="meta.zcml" />
 
   <browser:page
       for="Products.ATContentTypes.interfaces.topic.IATTopic"
@@ -15,6 +16,12 @@
       allowed_interface=".flexitopicview.IFlexiTopicMapView"
       permission="zope2.View"
       />
+
+  <cache:ruleset
+      for=".flexitopicview.FlexiTopicMapView"
+      ruleset="plone.content.folderView"
+      />
+
 
   <browser:page
       zcml:condition="installed plone.app.collection"
@@ -25,6 +32,10 @@
       permission="zope2.View"
       />
 
+  <cache:ruleset
+      for=".flexitopicview.FlexiCollectionMapView"
+      ruleset="plone.content.folderView"
+      />
 
   <browser:menuItem
       title="Flexi Topic Map View"
@@ -99,6 +110,12 @@
       permission="zope2.View"
       />
 
+
+  <cache:ruleset
+      for=".kmlview.FlexiTopicKmlView"
+      ruleset="plone.content.folderView"
+      />
+
   <browser:page
       zcml:condition="installed plone.app.collection"
       for="plone.app.collection.interfaces.ICollection"
@@ -106,6 +123,11 @@
       class=".kmlview.FlexiCollectionKmlView"
       allowed_interface=".kmlview.IFlexiTopicKmlView"
       permission="zope2.View"
+      />
+
+  <cache:ruleset
+      for=".kmlview.FlexiCollectionKmlView"
+      ruleset="plone.content.folderView"
       />
 
   <browser:viewlet

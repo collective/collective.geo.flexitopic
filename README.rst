@@ -2,7 +2,7 @@ Introduction
 ============
 
 Use collective.geo.flexitopic to easily build interactive maps out of plone
-collections. It combines plone maps (collective.geo) with collective.flexitopic.
+collections. It combines plone maps (collective.geo) with collective.flexitopic_.
 
 
 collective.flexitopic
@@ -17,7 +17,7 @@ For old style colletions subtopics are displayed inside tabs of the collection.
   additional view to the collection type.
 * it degrades for non javascript browsers to a simple table - (almost)
   same usability, no information loss.
-* it requires JQuery only (built into plone 4) no JQuery UI
+* it requires JQuery only (built into plone 4) no JQueryUI
 * lightweight JS
       * Flexigrid_: 24 KB packed
       * JSlider_: 15 KB packed
@@ -69,18 +69,39 @@ tab is the description of the topic, subtopics will occupy the following
 tabs. Subtopics will always be displayed as (plain html) tables defined
 by the criteria,  'Table Columns' and the 'Number of Items' of the subtopic.
 
+Search in a specific area (bounding box)
+-----------------------------------------
+
+If collective.geo.index_ is installed you are able to narrow
+down your search results to a specific bbox. In the map view it is
+possible to *draw* a box and only the features that are inside this
+box will be displayed.
 
 
 Installation
 ============
-You can install collective.geo.flexitopic as part of a specific project's
-buildout, by having a buildout configuration such as: ::
+This addon can be installed has any other addons, please follow official
+documentation_.
+
+.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+
+Add to buildouts configuration
+
+::
 
     [buildout]
     ...
     eggs =
         collective.geo.flexitopic
 
+Re-run buildout, e.g. with
+
+::
+
+    $ ./bin/buildout
+
+Restart Plone and activate the product in Plones Add-on configuration
+section.
 
 
 - Code repository: https://github.com/collective/collective.geo.flexitopic/
@@ -88,4 +109,7 @@ buildout, by having a buildout configuration such as: ::
 - Report bugs at https://github.com/collective/collective.geo.flexitopic/issues
 
 
-
+.. _Flexigrid: http://flexigrid.info/
+.. _JSlider: http://egorkhmelev.github.com/jslider/
+.. _collective.flexitopic: http://plone.org/products/collective.flexitopic
+.. _collective.geo.index: http://plone.org/products/collective.geo.index
