@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.4 (2013/09/05)
+-----------------
+
+- disable search inside BBOX with c.g.index
+- fixes
+
+
 0.3 (2013/08/30)
 ----------------
 

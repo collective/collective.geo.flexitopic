@@ -69,14 +69,6 @@ tab is the description of the topic, subtopics will occupy the following
 tabs. Subtopics will always be displayed as (plain html) tables defined
 by the criteria,  'Table Columns' and the 'Number of Items' of the subtopic.
 
-Search in a specific area (bounding box)
------------------------------------------
-
-If collective.geo.index_ is installed you are able to narrow
-down your search results to a specific bbox. In the map view it is
-possible to *draw* a box and only the features that are inside this
-box will be displayed.
-
 
 Installation
 ============
