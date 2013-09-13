@@ -2,7 +2,7 @@ Introduction
 ============
 
 Use collective.geo.flexitopic to easily build interactive maps out of plone
-collections. It combines plone maps (collective.geo) with collective.flexitopic_.
+collections. It combines plone maps (collective.geo_) with collective.flexitopic_.
 
 
 collective.flexitopic
@@ -69,14 +69,6 @@ tab is the description of the topic, subtopics will occupy the following
 tabs. Subtopics will always be displayed as (plain html) tables defined
 by the criteria,  'Table Columns' and the 'Number of Items' of the subtopic.
 
-Search in a specific area (bounding box)
------------------------------------------
-
-If collective.geo.index_ is installed you are able to narrow
-down your search results to a specific bbox. In the map view it is
-possible to *draw* a box and only the features that are inside this
-box will be displayed.
-
 
 Installation
 ============
@@ -113,3 +105,5 @@ section.
 .. _JSlider: http://egorkhmelev.github.com/jslider/
 .. _collective.flexitopic: http://plone.org/products/collective.flexitopic
 .. _collective.geo.index: http://plone.org/products/collective.geo.index
+.. _collective.geo: http://plone.org/products/collective.geo
+
