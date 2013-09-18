@@ -134,6 +134,7 @@
     zcml:condition="installed collective.geo.index"
     name="collective.geo.flexitopic.geosearch"
     manager="collective.flexitopic.interfaces.IFlexiTopicFormExt"
+    view=".flexitopicview.IFlexiTopicMapView"
     template="formviewlet.pt"
     permission="zope2.View"
     layer="collective.flexitopic.interfaces.IFlexiTopicLayer"

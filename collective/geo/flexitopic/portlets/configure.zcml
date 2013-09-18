@@ -1,11 +1,11 @@
-<configure 
+<?xml version="1.0" ?>
+<configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.geo.flexitopic">
-  <!-- Ensure Plone's portlets ZCML has already been processed; without
-       this, we may get a permission lookup error
-  -->
-  <include package="plone.app.portlets" />
+
+  <include package="collective.flexitopic" />
   <!-- -*- extra stuff goes here -*- -->
 
   <plone:portlet
@@ -18,5 +18,28 @@
       addview=".fleximapportlet.AddForm"
       editview=".fleximapportlet.EditForm"
       />
+
+    <browser:viewlet
+        view=".fleximapportlet.Renderer"
+        name="collective.flexitopic.portlet.map"
+        manager="collective.flexitopic.portlets.interfaces.IFlexiTopicMap"
+        layer="..interfaces.IGeoFlexiTopicLayer"
+        class="collective.geo.flexitopic.browser.flexitopicview.MapViewlet"
+        permission="zope2.View"
+        />
+
+<!-- override javascript for map view
+    note that it is registerd for the layer
+    collective.flexitopic.interfaces.IFlexiTopicLayer
+    but a different view!
+  -->
+  <browser:viewlet
+        name="collective.flexitopic.portlet.defaultjs"
+        view=".fleximapportlet.Renderer"
+        manager="collective.flexitopic.portlets.interfaces.IFlexiTopicJs"
+        class="collective.geo.flexitopic.browser.flexitopicview.JsMapViewlet"
+        permission="zope2.View"
+        layer="..interfaces.IGeoFlexiTopicLayer"
+        />
 
 </configure>

@@ -18,6 +18,15 @@ def add_ng_collection(context, logger=None):
     setup = getToolByName(context, 'portal_setup')
     setup.runImportStepFromProfile(PROFILE_ID, 'typeinfo')
 
+def add_portlet(context, logger=None):
+    if logger is None:
+        # Called as upgrade step: define our own logger.
+        logger = logging.getLogger('collective.geo.flexitopic')
+    logger.info("register portlets")
+    setup = getToolByName(context, 'portal_setup')
+    setup.runImportStepFromProfile(PROFILE_ID, 'portlets')
+    return
+
 
 def import_various(context):
     """Import step for configuration that is not handled in xml files.

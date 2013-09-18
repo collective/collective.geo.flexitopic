@@ -1,19 +1,20 @@
 from zope.interface import Interface
 from zope.interface import implements
 
-from plone.app.portlets.portlets import base
-from plone.portlets.interfaces import IPortletDataProvider
+from collective.flexitopic.portlets import flexitopicportlet as base
+#from plone.portlets.interfaces import IPortletDataProvider
 
 from zope import schema
 from zope.formlib import form
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 
 from collective.geo.flexitopic import flexitopicMessageFactory as _
 
 from zope.i18nmessageid import MessageFactory
 __ = MessageFactory("plone")
 
-class IFlexiMapPortlet(IPortletDataProvider):
+class IFlexiMapPortlet(base.IFlexiTopicPortlet):
     """A portlet
 
     It inherits from IPortletDataProvider because for this portlet, the
@@ -21,15 +22,16 @@ class IFlexiMapPortlet(IPortletDataProvider):
     same.
     """
 
-    # TODO: Add any zope.schema fields here to capture portlet configuration
-    # information. Alternatively, if there are no settings, leave this as an
-    # empty interface - see also notes around the add form and edit form
-    # below.
-
-    # some_field = schema.TextLine(title=_(u"Some field"),
-    #                              description=_(u"A field to use"),
-    #                              required=True)
-
+    show_table = schema.Bool(title=_(u"Show table"),
+                description=_(u"Uncheck if you want to hide the resultstable"),
+                required=False,
+                default=True,
+                )
+    show_form = schema.Bool(title=_("Show search form"),
+                description=_(u"Uncheck if you want to hide the searchform"),
+                required=False,
+                default=True,
+                )
 
 class Assignment(base.Assignment):
     """Portlet assignment.
@@ -39,17 +41,19 @@ class Assignment(base.Assignment):
     """
 
     implements(IFlexiMapPortlet)
+    show_table = True
+    show_form = True
 
-    # TODO: Set default values for the configurable parameters here
-
-    # some_field = u""
-
-    # TODO: Add keyword parameters for configurable parameters here
-    # def __init__(self, some_field=u''):
-    #    self.some_field = some_field
-
-    def __init__(self):
-        pass
+    def __init__(self, header=u"", target_collection=None, limit=None,
+                 show_more=True, omit_border=False,
+                 flexitopic_width=None, flexitopic_height=None,
+                 show_table = True, show_form = True):
+        super(Assignment, self).__init__(header=u"",
+                target_collection=None, limit=None,
+                show_more=True, omit_border=False,
+                flexitopic_width=None, flexitopic_height=None)
+        self.show_table = show_table
+        self.show_form = show_form
 
     @property
     def title(self):
@@ -66,12 +70,8 @@ class Renderer(base.Renderer):
     rendered, and the implicit variable 'view' will refer to an instance
     of this class. Other methods can be added and referenced in the template.
     """
-
-    render = ViewPageTemplateFile('fleximapportlet.pt')
-
-
-# NOTE: If this portlet does not have any configurable parameters, you can
-# inherit from NullAddForm and remove the form_fields variable.
+    def MapWH(self):
+        pass
 
 class AddForm(base.AddForm):
     """Portlet add form.
@@ -81,14 +81,16 @@ class AddForm(base.AddForm):
     constructs the assignment that is being added.
     """
     form_fields = form.Fields(IFlexiMapPortlet)
+    form_fields['target_collection'].custom_widget = UberSelectionWidget
+
+    label = _(u"Add Flexitopic Portlet")
+    description = _(u""" You can search the collection and the map
+                    with the fields you provided in the topic criteria.
+                    """)
 
     def create(self, data):
         return Assignment(**data)
 
-
-# NOTE: IF this portlet does not have any configurable parameters, you can
-# remove this class definition and delete the editview attribute from the
-# <plone:portlet /> registration in configure.zcml
 
 class EditForm(base.EditForm):
     """Portlet edit form.
@@ -97,3 +99,9 @@ class EditForm(base.EditForm):
     zope.formlib which fields to display.
     """
     form_fields = form.Fields(IFlexiMapPortlet)
+    form_fields['target_collection'].custom_widget = UberSelectionWidget
+
+    label=_(u"Edit FlexiTopic Map Portlet")
+    description = _(u""" You can search the collection and the map
+                    with the fields you provided in the topic criteria.
+                    """)

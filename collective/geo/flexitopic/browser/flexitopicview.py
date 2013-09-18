@@ -3,6 +3,7 @@ from collective.flexitopic.browser.flexitopicview import FlexiTopicView
 from collective.flexitopic.browser.flexitopicview import FlexiCollectionView
 from collective.flexitopic.browser.viewlets import JsViewlet, BaseViewlet
 from collective.geo.flexitopic.interfaces import IGeoFlexiTopicViewlet
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class IFlexiTopicMapView(Interface):
@@ -49,3 +50,4 @@ class MapViewlet(BaseViewlet):
     '''
     implements(IGeoFlexiTopicViewlet)
 
+    render = ViewPageTemplateFile("map_viewlet.pt")
