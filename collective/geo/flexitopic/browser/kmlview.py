@@ -18,6 +18,10 @@ class FlexiTopicKmlView(KMLBaseDocument):
     """
     implements(IFlexiTopicKmlView)
 
+    def __init__(self, context, request):
+        super(FlexiTopicKmlView, self).__init__(context, request)
+        self.topic = context
+
 
     @property
     def portal_catalog(self):
