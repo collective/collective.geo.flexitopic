@@ -70,8 +70,7 @@ class Renderer(base.Renderer):
     rendered, and the implicit variable 'view' will refer to an instance
     of this class. Other methods can be added and referenced in the template.
     """
-    def MapWH(self):
-        pass
+
 
 class AddForm(base.AddForm):
     """Portlet add form.
