@@ -27,11 +27,7 @@ class IFlexiMapPortlet(base.IFlexiTopicPortlet):
                 required=False,
                 default=True,
                 )
-    show_form = schema.Bool(title=_("Show search form"),
-                description=_(u"Uncheck if you want to hide the searchform"),
-                required=False,
-                default=True,
-                )
+
 
 class Assignment(base.Assignment):
     """Portlet assignment.
@@ -42,18 +38,16 @@ class Assignment(base.Assignment):
 
     implements(IFlexiMapPortlet)
     show_table = True
-    show_form = True
 
     def __init__(self, header=u"", target_collection=None, limit=None,
                  show_more=True, omit_border=False,
                  flexitopic_width=None, flexitopic_height=None,
-                 show_table = True, show_form = True):
+                 show_form = True, show_table = True):
         super(Assignment, self).__init__(header=u"",
                 target_collection=None, limit=None,
                 show_more=True, omit_border=False,
                 flexitopic_width=None, flexitopic_height=None)
         self.show_table = show_table
-        self.show_form = show_form
 
     @property
     def title(self):
@@ -70,7 +64,8 @@ class Renderer(base.Renderer):
     rendered, and the implicit variable 'view' will refer to an instance
     of this class. Other methods can be added and referenced in the template.
     """
-
+    def show_table(self):
+        return self.data.show_table
 
 class AddForm(base.AddForm):
     """Portlet add form.
