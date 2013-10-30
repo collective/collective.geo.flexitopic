@@ -77,7 +77,7 @@
         layer="..interfaces.IGeoFlexiTopicLayer"
         class=".flexitopicview.MapViewlet"
         permission="zope2.View"
-        template="map_collection_viewlet.pt"
+        template="map_viewlet.pt"
         />
 
   <!-- override javascript for map view
