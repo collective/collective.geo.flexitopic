@@ -1,5 +1,5 @@
 
-<div id="flexitopicmap" style="height:450px; width: 900px">
+<div id="flexitopicmap">
     <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     <metal:use use-macro="context/@@collectivegeo-macros/map-widget"  />
     <script type="text/javascript"
