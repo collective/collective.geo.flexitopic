@@ -1,4 +1,3 @@
-
 <div id="flexitopicmap">
     <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     <metal:use use-macro="context/@@collectivegeo-macros/map-widget"  />
