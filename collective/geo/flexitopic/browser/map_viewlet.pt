@@ -4,5 +4,5 @@
     <script type="text/javascript"
     src="++resource++geo.kml.javascripts/kml_openlayers.js"></script>
 </div>
-<a href="@@flexitopickml_view" id="flexitopickmlurl" i18n:translate=""> Download KML </a>
+<a href="@@flexitopickml_view" id="flexitopickmlurl" i18n:domain="collective.geo.flexitopic" i18n:translate=""> Download KML </a>
 

@@ -2,12 +2,16 @@
 
 PRODUCT=collective.geo.flexitopic
 
-i18ndude rebuild-pot --pot ../locales/${PRODUCT}.pot --create $PRODUCT  ../browser
+i18ndude rebuild-pot --pot ../locales/${PRODUCT}.pot --create $PRODUCT  ../browser ../portlets
 i18ndude sync --pot ../locales/${PRODUCT}.pot ../locales/*/LC_MESSAGES/${PRODUCT}.po
+
+i18ndude rebuild-pot --pot ../locales/plone.pot --create plone  ../configure.zcml ../portlets ../profiles
+i18ndude sync --pot ../locales/plone.pot ../locales/*/LC_MESSAGES/plone.po
 
 for lang in $(find ../locales -mindepth 1 -maxdepth 1 -type d); do
     if test -d $lang/LC_MESSAGES; then
         msgfmt -o $lang/LC_MESSAGES/${PRODUCT}.mo $lang/LC_MESSAGES/${PRODUCT}.po
+        msgfmt -o $lang/LC_MESSAGES/plone.mo $lang/LC_MESSAGES/plone.po
     fi
 done
 

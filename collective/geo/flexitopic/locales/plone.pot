@@ -15,26 +15,22 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.geo.flexitopic\n"
+"Domain: plone\n"
+
+#: ../profiles/default/portlets.xml
+msgid "A Portlet to dispay a flexitopic map"
+msgstr ""
 
 #: ../portlets/fleximapportlet.py:80
 msgid "Add Flexitopic Portlet"
-msgstr ""
-
-#: ../browser/map_viewlet.pt:7
-msgid "Download KML"
 msgstr ""
 
 #: ../portlets/fleximapportlet.py:97
 msgid "Edit FlexiTopic Map Portlet"
 msgstr ""
 
-#: ../browser/configure.zcml:46
-msgid "Flexi Topic Map View"
-msgstr ""
-
-#: ../browser/configure.zcml:46
-msgid "Set Flexitopic Map as default view."
+#: ../profiles/default/portlets.xml
+msgid "Flexitopic map portlet"
 msgstr ""
 
 #: ../portlets/fleximapportlet.py:25
@@ -47,12 +43,4 @@ msgstr ""
 
 #: ../portlets/fleximapportlet.py:81
 msgid "You can search the collection and the map with the fields you provided in the topic criteria."
-msgstr ""
-
-#: ../browser/formviewlet.pt:29
-msgid "overlaps"
-msgstr ""
-
-#: ../browser/formviewlet.pt:25
-msgid "within"
 msgstr ""

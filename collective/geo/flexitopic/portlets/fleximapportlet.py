@@ -78,9 +78,8 @@ class AddForm(base.AddForm):
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
     label = _(u"Add Flexitopic Portlet")
-    description = _(u""" You can search the collection and the map
-                    with the fields you provided in the topic criteria.
-                    """)
+    description = _(u"You can search the collection and the map "
+                    "with the fields you provided in the topic criteria.")
 
     def create(self, data):
         return Assignment(**data)
@@ -96,6 +95,5 @@ class EditForm(base.EditForm):
     form_fields['target_collection'].custom_widget = UberSelectionWidget
 
     label=_(u"Edit FlexiTopic Map Portlet")
-    description = _(u""" You can search the collection and the map
-                    with the fields you provided in the topic criteria.
-                    """)
+    description = _(u"You can search the collection and the map "
+                    "with the fields you provided in the topic criteria.")
