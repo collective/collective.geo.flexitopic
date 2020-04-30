@@ -70,6 +70,14 @@ tabs. Subtopics will always be displayed as (plain html) tables defined
 by the criteria,  'Table Columns' and the 'Number of Items' of the subtopic.
 
 
+Translations
+============
+
+This product has been translated into
+
+- Spanish.
+
+
 Installation
 ============
 This addon can be installed has any other addons, please follow official

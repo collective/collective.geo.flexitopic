@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.flexitopic 1.0\n"
 "POT-Creation-Date: 2020-04-30 09:32+0000\n"
-"PO-Revision-Date: 2020-04-30 05:34-0400\n"
+"PO-Revision-Date: 2020-04-30 05:33-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
 "Language: es\n"
@@ -16,28 +16,24 @@ msgstr ""
 "Language-Code: es\n"
 "Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.geo.flexitopic\n"
+"Domain: plone\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+#: ../profiles/default/portlets.xml
+msgid "A Portlet to dispay a flexitopic map"
+msgstr "Un Portlet para mostrar un mapa flexitopic"
 
 #: ../portlets/fleximapportlet.py:80
 msgid "Add Flexitopic Portlet"
 msgstr "Añadir Portlet Flexitopic"
 
-#: ../browser/map_viewlet.pt:7
-msgid "Download KML"
-msgstr "Descargar KML"
-
 #: ../portlets/fleximapportlet.py:97
 msgid "Edit FlexiTopic Map Portlet"
-msgstr "Editar Portlet Flexitopic"
+msgstr "Editar Portlet Mapa FlexiTopic"
 
-#: ../browser/configure.zcml:46
-msgid "Flexi Topic Map View"
-msgstr "Vista de mapa Flexi Topic"
-
-#: ../browser/configure.zcml:46
-msgid "Set Flexitopic Map as default view."
-msgstr "Definir Mapa Flexitopic como vista por defecto."
+#: ../profiles/default/portlets.xml
+msgid "Flexitopic map portlet"
+msgstr "Portlet mapa Flexitopic"
 
 #: ../portlets/fleximapportlet.py:25
 msgid "Show table"
@@ -50,11 +46,3 @@ msgstr "Desmarcar si usted quiere la tabla de resultados"
 #: ../portlets/fleximapportlet.py:81
 msgid "You can search the collection and the map with the fields you provided in the topic criteria."
 msgstr "Puede buscar en la colección y el mapa con los campos que proporcionó en los criterios del tema."
-
-#: ../browser/formviewlet.pt:29
-msgid "overlaps"
-msgstr "solapar"
-
-#: ../browser/formviewlet.pt:25
-msgid "within"
-msgstr "dentro"
